@@ -1,0 +1,41 @@
+version:  '3'
+
+services: 
+  web:
+    build: .
+    command: 
+      daphne -b 0.0.0.0 -p 8001 tictactoe.asgi:application
+  #     # - python manage.py collectstatic --noinput
+  #     # - 
+    volumes: 
+      - .:/app
+  #     # - .:/usr/src/app/
+      
+    ports: 
+      - '8001:8001'
+
+    stdin_open: true
+    tty: true
+#    links:
+ #     - redis
+  #redis:
+   # image: redis
+    #command: redis-server --appendonly yes --replica-read-only no
+
+   # ports:
+    #  - '6379:6379'
+  # jupyter:
+  #   build:
+  #     context: . 
+  #     dockerfile: ./jupyter/Dockerfile
+  #   command: ["python","manage.py","shell_plus", "--notebook"]
+  #   #command: ["jupyter-lab","--ip=0.0.0.0","--port=8888", "--no-browser","--allow-root"]
+  #   volumes: 
+  #     - .:/app
+  #   ports: 
+  #     - "8888:8888"
+  #   stdin_open: true
+  #   tty: true
+    
+#volumes: 
+  #static:
